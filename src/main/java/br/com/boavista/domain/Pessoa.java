@@ -12,10 +12,10 @@ import javax.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@Data
-@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "pessoa")
+@EqualsAndHashCode(callSuper = true)
+@Data
 public class Pessoa extends AbstractEntity {
 
 	private static final long serialVersionUID = -4461687923626275439L;
@@ -29,7 +29,7 @@ public class Pessoa extends AbstractEntity {
 	@Column(name = "data_nascimento")
 	private String dataNascimento;
 
-	@Column(name = "observacao")
+	@Column(name = "observacao", length = 150)
 	private String observacao;
 
 	@Embedded
