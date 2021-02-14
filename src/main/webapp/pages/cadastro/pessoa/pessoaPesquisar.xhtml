@@ -1,103 +1,346 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-	
-	<ui:define name="title">Lista Telefônica - Contato</ui:define>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:define name="title">Lista Telefônica - Contato</ui:define>
+
+<ui:define name="metadata">
+    <f:metadata>
+        <f:event listener="#{pessoaBean.carregarPesquisa}"
+                 type="preRenderView"/>
+    </f:metadata>
+</ui:define>
 
 <ui:composition template="/template/geral.xhtml">
 
-	<ui:define name="conteudo">
-		<h:form id="formContatoPesquisar">
-			<p:toolbar>
-				<f:facet name="left">
-					<h:outputText value="Contato" />
-				</f:facet>
-			</p:toolbar>
+    <ui:define name="conteudo">
+        <h:form id="formPessoaListar">
+            <p:toolbar>
+                <f:facet name="left">
+                    <h:outputText value="Contato"/>
+                </f:facet>
+            </p:toolbar>
 
-			<p:separator />
+            <p:separator/>
+            <p:button value="#{msg.novo}" icon="ui-icon-circle-plus"
+                      style="width: 120px;" title="#{msg.novo}"
+                      outcome="/pages/cadastro/pessoa/pessoaCadastrar.xhtml?faces-redirect=true"/>
+            <p:separator/>
 
-			<p:dataTable emptyMessage="Nenhum registro encontrado..."
-				value="#{pessoaBean.listaItens}" filteredValue="" var="pessoa"
-				paginator="true" rows="10">
+            <p:dataTable emptyMessage="Nenhum registro encontrado..."
+                         id="tabelaPessoaListar" value="#{pessoaBean.listaPessoas}"
+                         filteredValue="" var="pessoa" paginator="true" rows="10"
+                         rowsPerPageTemplate="5, 10, 15, 20"
+                         paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 
-				<p:column headerText="Nome" style="text-align: center;"
-					filterBy="#{pessoa.nome}">
-					<h:outputText value="#{pessoa.nome}"
-						style="text-transform: uppercase;" />
-				</p:column>
+                <p:column headerText="Nome" style="text-align: center;"
+                          filterBy="#{pessoa.nome}">
+                    <h:outputText value="#{pessoa.nome}"
+                                  style="text-transform: uppercase;"/>
+                </p:column>
 
-				<p:column headerText="Data Nascimento" style="text-align: center;">
-					<h:outputText value="#{pessoa.dataNascimento}"/>
-				</p:column>
+                <p:column headerText="Data Nascimento" style="text-align: center; width: 15%;">
+                    <h:outputText value="#{pessoa.dataNascimento}"/>
+                </p:column>
 
-				<p:column headerText="Telefone" style="text-align: center;">
-					<h:outputText value="#{pessoa.contato.telefone}"/>
-				</p:column>
-				
-				<p:column headerText="Celular" style="text-align: center;">
-					<h:outputText value="#{pessoa.contato.celular}"/>
-				</p:column>
-				
-				<p:column headerText="Whatsapp" style="text-align: center;">
-					<h:outputText value="#{pessoa.contato.whatsapp}"/>
-				</p:column>
+                <p:column headerText="Telefone" style="text-align: center; width: 15%;">
+                    <h:outputText value="#{pessoa.contato.telefone}"/>
+                </p:column>
 
-				<p:column headerText="Opção" style="text-align: center; width: 11%;">
-					<p:button icon="ui-icon-pencil" title="Editar"
-						outcome="/pages/itemCadastro.xhtml">
-						<f:param name="itemCodigo" value="#{item.codigo}" />
-						<f:param name="itemAcao" value="Editar" />
-					</p:button>
+                <p:column headerText="Celular" style="text-align: center; width: 15%;">
+                    <h:outputText value="#{pessoa.contato.celular}"/>
+                </p:column>
 
-					<p:button icon="ui-icon-trash" title="Excluir"
-						outcome="/pages/itemCadastro.xhtml">
-						<f:param name="itemCodigo" value="#{item.codigo}" />
-						<f:param name="itemAcao" value="Excluir" />
-					</p:button>
+                <p:column headerText="Whatsapp" style="text-align: center; width: 15%;">
+                    <h:outputText value="#{pessoa.contato.whatsapp}"/>
+                </p:column>
 
-					<p:commandButton update=":formItem"
-						oncomplete="PF('dialogItem').show();" icon="ui-icon-search"
-						title="Exibir">
-						<f:setPropertyActionListener value="#{item}"
-							target="#{itemBean.itemCadastro}" />
-					</p:commandButton>
-				</p:column>
-			</p:dataTable>
+                <p:column headerText="Opção" style="text-align: center; width: 14%;">
+                    <p:commandButton icon="ui-icon-pencil" title="Editar"
+                                     style="width: 50px" oncomplete="PF('dialogPessoaEditar').show();"
+                                     update=":formPessoaEditar">
+                        <f:setPropertyActionListener value="#{pessoa}"
+                                                     target="#{pessoaBean.pessoaCadastro}"/>
+                    </p:commandButton>
 
-			<p:dialog header="Informaçõs de Itens" widgetVar="dialogItem"
-				modal="true" showEffect="fade" hideEffect="fade" resizable="false"
-				visible="false" appendTo="@(body)">
+                    <p:commandButton icon="ui-icon-trash" title="Excluir"
+                                     style="width: 50px" oncomplete="PF('dialogPessoaExcluir').show();"
+                                     update=":formPessoaExcluir:panelPessoaExcluir">
+                        <f:setPropertyActionListener value="#{pessoa}"
+                                                     target="#{pessoaBean.pessoaCadastro}"/>
+                    </p:commandButton>
 
-				<h:panelGrid columns="2" id="panelInfoItens">
-					<h:outputText value="Nome:" />
-					<h:inputText size="40" disabled="true"
-						style="text-transform: uppercase;"
-						value="#{itemBean.itemCadastro.nome}" />
+                    <p:commandButton update=":formPessoaInfo"
+                                     oncomplete="PF('dialogPessoaListar').show();"
+                                     icon="ui-icon-search" title="Exibir" style="width: 50px">
+                        <f:setPropertyActionListener value="#{pessoa}"
+                                                     target="#{pessoaBean.pessoaCadastro}"/>
+                    </p:commandButton>
+                </p:column>
+            </p:dataTable>
+        </h:form>
 
-					<h:outputText value="Tipo Unidade:" />
-					<h:inputText size="40" disabled="true"
-						style="text-transform: uppercase;"
-						value="#{itemBean.itemCadastro.tipoUnidade.nome}" />
 
-					<h:outputText value="Estoque Mínimo:" />
-					<h:inputText size="40" disabled="true"
-						style="text-transform: uppercase;"
-						value="#{itemBean.itemCadastro.estoqueMinimo}" />
-				</h:panelGrid>
+        <!-- Dialogo Editar -->
+        <p:dialog header="Editar" widgetVar="dialogPessoaEditar" modal="true"
+                  showEffect="fade" resizable="false" visible="false"
+                  appendTo="@(body)" draggable="false">
 
-				<p:outputPanel columns="1" style="text-align: center;">
-					<p:separator />
-					<p:commandButton value="Cancelar"
-						oncomplete="PF('dialogItem').hide();" />
-				</p:outputPanel>
-			</p:dialog>
+            <h:form id="formPessoaEditar">
+                <p:fieldset legend="Dados Pessoa"
+                            style="margin: 0px 20px 20px 20px;">
+                    <h:panelGrid columns="4" id="panelEditarPessoa"
+                                 style="margin: 20px 10px 0px 10px;">
+                       
+                        <h:outputText value="Nome:"/>
+                        <p:inputText id="nome" size="50"
+                                     style="text-transform: uppercase; height: 23px;"
+                                     title="Digite um nome para o contato..."
+                                     value="#{pessoaBean.pessoaCadastro.nome}"/>
 
-		</h:form>
-	</ui:define>
+                        <h:outputText value="Data Nascimento:"/>
+                        <p:calendar id="dataNascimento" size="50" style="height: 1050px;"
+                                    title="Digite uma data para o nascimento do contato..."
+                                    value="#{pessoaBean.pessoaCadastro.dataNascimento}" mask="true"
+                                    pattern="dd/MM/yyyy"/>
+                    </h:panelGrid>
+                    <h:panelGrid columns="2" id="panelEditarPessoaObs"
+                                 style="margin: 20px 10px 0px 10px;">
 
+                        <h:outputText value="Observação:"/>
+                        <h:inputTextarea id="observacao" rows="2" cols="105"
+                                         title="Observações do contato..."
+                                         value="#{pessoaBean.pessoaCadastro.observacao}"/>
+                    </h:panelGrid>
+                </p:fieldset>
+
+                <p:fieldset legend="Dados Endereço/Contato"
+                            style="margin: 0px 20px 20px 20px;">
+                    <h:panelGrid columns="4" id="panelPessoaEnderecoEditar"
+                                 style="margin: 20px 10px 20px 10px;">
+
+                        <h:outputText value="Logradouro:"/>
+                        <p:inputText id="logradouro" size="50"
+                                     style="text-transform: uppercase;"
+                                     title="Digite um nome para o logradouro do contato..."
+                                     value="#{pessoaBean.pessoaCadastro.endereco.logradouro}"/>
+
+                        <h:outputText value="Número:"/>
+                        <p:inputText id="numero" size="50"
+                                     style="text-transform: uppercase;"
+                                     title="Digite um número para o endereço do contato..."
+                                     value="#{pessoaBean.pessoaCadastro.endereco.numero}"
+                                     converterMessage="Digite um valor somente numérico para o campo número...">
+
+                        </p:inputText>
+
+                        <h:outputText value="Complemento:"/>
+                        <p:inputText id="complemento" size="50"
+                                     style="text-transform: uppercase;"
+                                     title="Digite um complemento para o endereço do contato..."
+                                     value="#{pessoaBean.pessoaCadastro.endereco.complemento}"/>
+
+                        <h:outputText value="Bairro:"/>
+                        <p:inputText id="bairro" size="50"
+                                     style="text-transform: uppercase;"
+                                     title="Digite um nome para o bairro do contato..."
+                                     value="#{pessoaBean.pessoaCadastro.endereco.bairro}"/>
+
+                        <h:outputText value="CEP:"/>
+                        <p:inputMask id="cep" size="50"
+                                     title="Digite um número para o CEP do contato..."
+                                     value="#{pessoaBean.pessoaCadastro.endereco.cep}"
+                                     mask="99.999-999"/>
+
+                        <h:outputText value="Telefone:"/>
+                        <p:inputMask id="telefone" size="50"
+                                     title="Digite um número para o telefone fixo do contato..."
+                                     value="#{pessoaBean.pessoaCadastro.contato.telefone}"
+                                     mask="(85) 9999-9999"/>
+
+                        <h:outputText value="Celular:"/>
+                        <p:inputMask id="celular" size="50"
+                                     title="Digite um número para o celular do contato..."
+                                     value="#{pessoaBean.pessoaCadastro.contato.celular}"
+                                     mask="(85) 99999-9999"/>
+
+                        <h:outputText value="Whatsapp:"/>
+                        <p:inputMask id="whatsapp" size="50"
+                                     title="Digite um número para o whatsapp do contato..."
+                                     value="#{pessoaBean.pessoaCadastro.contato.whatsapp}"
+                                     mask="(85) 99999-9999"/>
+
+                        <h:outputText value="Email:"/>
+                        <p:inputText id="email" size="50"
+                                     style="text-transform: uppercase;"
+                                     title="Digite um email para o contato..."
+                                     value="#{fornecedorBean.fornecedorCadastro.contato.email}"/>
+                    </h:panelGrid>
+                </p:fieldset>
+
+                <p:outputPanel columns="1"
+                               style="text-align: center; margin: 30px 0px 30px 0px;">
+                    <p:commandButton value="#{msg.salvar}"
+                                     style="margin-right: 20px; width: 120px;" icon="fa fa-floppy-o"
+                                     styleClass="green-button raised-btn" title="#{msg.salvar}"
+                                     oncomplete="PF('dialogPessoaEditar').hide();"
+                                     actionListener="#{pessoaBean.editar}"
+                                     update=":mensagemGlobal :formPessoaListar:tabelaPessoaListar"/>
+
+                    <p:commandButton value="#{msg.cancelar}" style="width: 120px;"
+                                     icon="fa fa-fw fa-times" styleClass="red-button raised-btn"
+                                     title="#{msg.cancelar}"
+                                     oncomplete="PF('dialogPessoaEditar').hide();"/>
+                </p:outputPanel>
+            </h:form>
+        </p:dialog>
+
+        <!-- Dialogo Excluir -->
+        <p:dialog header="#{msg.excluir}" widgetVar="dialogPessoaExcluir"
+                  modal="true" showEffect="fade" resizable="false" visible="false"
+                  appendTo="@(body)" draggable="false">
+
+            <h:form id="formPessoaExcluir">
+                <p:fieldset legend="Pessoa" style="margin: 0px 20px 20px 20px;">
+                    <h:panelGrid columns="3" id="panelPessoaExcluir"
+                                 style="margin: 20px 10px 20px 10px;">
+
+                        <h:outputText value="Tem certeza que deseja excluir o contato "/>
+                        <h:outputText style="font-weight: bold;"
+                                      value="#{pessoaBean.pessoaCadastro.nome}"/>
+                        <h:outputText value=" do sistema?"/>
+                    </h:panelGrid>
+                </p:fieldset>
+
+                <p:outputPanel columns="2"
+                               style="text-align: center; margin: 30px 10px 30px 10px;">
+                    <p:commandButton value="#{msg.sim}"
+                                     style="margin-right: 20px; width: 120px;" icon="ui-icon-trash"
+                                     title="#{msg.excluir}" styleClass="green-button raised-btn"
+                                     oncomplete="PF('dialogPessoaExcluir').hide(); PF('tabelaPessoaListar').clearFilters()"
+                                     actionListener="#{pessoaBean.excluir}"
+                                     update=":mensagemGlobal :formPessoaListar:tabelaPessoaListar"/>
+
+                    <p:commandButton value="#{msg.nao}" style="width: 120px;"
+                                     icon="fa fa-fw fa-times" styleClass="red-button raised-btn"
+                                     title="#{msg.cancelar}"
+                                     oncomplete="PF('dialogPessoaExcluir').hide();"/>
+                </p:outputPanel>
+            </h:form>
+        </p:dialog>
+
+        <!-- Dialogo Info -->
+        <p:dialog header="#{msg.info}" widgetVar="dialogPessoaListar"
+                  modal="true" showEffect="fade" resizable="false" visible="false"
+                  appendTo="@(body)" draggable="false">
+
+            <h:form id="formPessoaInfo">
+                <p:fieldset legend="Dados Pessoa"
+                            style="margin: 0px 20px 20px 20px;">
+                    <h:panelGrid columns="4" id="panelInfoPessoa"
+                                 style="margin: 20px 10px 0px 10px;">
+
+                        <h:outputText value="Nome:"/>
+                        <h:inputText size="50" disabled="true" style="height: 23px;"
+                                     title="Nome do contato..."
+                                     value="#{pessoaBean.pessoaCadastro.nome}"/>
+
+                        <h:outputText value="Data Nascimento:"/>
+                        <h:inputText size="50" disabled="true" style="height: 23px;"
+                                     title="Data de nascimento do contato..."
+                                     value="#{pessoaBean.pessoaCadastro.dataNascimento}">
+                            <f:convertDateTime pattern="dd/MM/yyyy"
+                                               timeZone="America/Sao_Paulo"/>
+                        </h:inputText>
+                    </h:panelGrid>
+                    
+                    <h:panelGrid columns="4" id="panelInfoPessoaObs"
+                                 style="margin: 20px 10px 0px 10px;">
+
+                        <h:outputText value="Observação:"/>
+                        <h:inputTextarea id="observacao" rows="2" cols="115"
+                                         disabled="true" title="Observações do contato..."
+                                         value="#{pessoaBean.pessoaCadastro.observacao}"/>
+
+                    </h:panelGrid>
+                </p:fieldset>
+
+                <p:fieldset legend="Dados Endereço/Contato"
+                            style="margin: 0px 20px 20px 20px;">
+                    <h:panelGrid columns="4" id="panelPessoaInfoEndereco"
+                                 style="margin: 20px 10px 20px 10px;">
+
+                        <h:outputText value="Logradouro:"/>
+                        <h:inputText size="50" disabled="true" placeholder="Logradouro"
+                                     style="text-transform: uppercase; height: 23px;"
+                                     title="Nome logradouro do contato..."
+                                     value="#{pessoaBean.pessoaCadastro.endereco.logradouro}"/>
+
+                        <h:outputText value="Número:"/>
+                        <h:inputText size="50" disabled="true" placeholder="Número"
+                                     style="text-transform: uppercase; height: 23px;"
+                                     title="Número endereço do contato..."
+                                     value="#{pessoaBean.pessoaCadastro.endereco.numero}"/>
+
+                        <h:outputText value="Complemento:"/>
+                        <h:inputText size="50" disabled="true" placeholder="Complemento"
+                                     style="text-transform: uppercase; height: 23px;"
+                                     title="Complemento endereço do contato..."
+                                     value="#{pessoaBean.pessoaCadastro.endereco.complemento}"/>
+
+                        <h:outputText value="Bairro:"/>
+                        <h:inputText size="50" disabled="true" placeholder="Bairro"
+                                     style="text-transform: uppercase; height: 23px;"
+                                     title="Bairro do contato..."
+                                     value="#{pessoaBean.pessoaCadastro.endereco.bairro}"/>
+
+                        <h:outputText value="CEP:"/>
+                        <h:inputText size="50" disabled="true" style="height: 23px;"
+                                     placeholder="CEP" title="CEP do contato..."
+                                     value="#{pessoaBean.pessoaCadastro.endereco.cep}"
+                                     mask="99.999-999"/>
+
+                        <h:outputText value="Telefone:"/>
+                        <h:inputText size="50" disabled="true" style="height: 23px;"
+                                     placeholder="Telefone" title="Telefone fixo do contato..."
+                                     value="#{pessoaBean.pessoaCadastro.contato.telefone}"
+                                     mask="(99) 9999-9999"/>
+
+                        <h:outputText value="Celular:"/>
+                        <h:inputText size="50" disabled="true" style="height: 23px;"
+                                     placeholder="Celular" title="Celular do contato..."
+                                     value="#{pessoaBean.pessoaCadastro.contato.celular}"
+                                     mask="(99) 99999-9999"/>
+
+                        <h:outputText value="Whatsapp:"/>
+                        <h:inputText size="50" disabled="true" style="height: 23px;"
+                                     placeholder="Whatsapp" title="Whatsapp do contato..."
+                                     value="#{pessoaBean.pessoaCadastro.contato.whatsapp}"
+                                     mask="(99) 99999-9999"/>
+
+                        <h:outputText value="Email:"/>
+                        <h:inputText size="50" disabled="true"
+                                     style="text-transform: uppercase; height: 23px;"
+                                     placeholder="Email" title="Email do contato..."
+                                     value="#{pessoaBean.pessoaCadastro.contato.email}"/>
+
+                    </h:panelGrid>
+                </p:fieldset>
+
+                <p:outputPanel columns="1"
+                               style="text-align: center; margin: 30px 0px 30px 0px;">
+                    <p:commandButton value="#{msg.fechar}" style="width: 120px;"
+                                     icon="fa fa-fw fa-times" styleClass="red-button raised-btn"
+                                     title="#{msg.fechar}"
+                                     oncomplete="PF('dialogPessoaListar').hide();"/>
+                </p:outputPanel>
+            </h:form>
+        </p:dialog>
+    </ui:define>
 </ui:composition>
 </html>
