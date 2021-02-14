@@ -1,5 +1,7 @@
 package br.com.boavista.domain;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -27,7 +29,7 @@ public class Pessoa extends AbstractEntity {
 
 	@Temporal(value = TemporalType.DATE)
 	@Column(name = "data_nascimento")
-	private String dataNascimento;
+	private Date dataNascimento;
 
 	@Column(name = "observacao", length = 150)
 	private String observacao;
