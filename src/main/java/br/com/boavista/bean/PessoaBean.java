@@ -10,9 +10,11 @@ import javax.faces.bean.SessionScoped;
 import br.com.boavista.dao.PessoaDAO;
 import br.com.boavista.domain.Pessoa;
 import br.com.boavista.util.FacesUtil;
+import lombok.Data;
 
 @ManagedBean(name = "pessoaBean")
 @SessionScoped
+@Data
 public class PessoaBean implements Serializable {
 
 	private static final long serialVersionUID = -1920692048518468781L;
