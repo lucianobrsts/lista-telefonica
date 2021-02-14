@@ -30,4 +30,8 @@ public class Contato implements Serializable {
 	@Email
 	private String email;
 
+	public void setEmail(String email) {
+		this.email = email.toUpperCase();
+	}
+
 }
