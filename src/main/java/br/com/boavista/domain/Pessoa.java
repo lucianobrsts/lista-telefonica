@@ -27,7 +27,7 @@ public class Pessoa extends AbstractEntity {
 	private static final long serialVersionUID = -4461687923626275439L;
 
 	@NotEmpty(message = "O preenchimento do campo nome é obrigatório.")
-	@Size(min = 3, max = 50, message = "Tamanho inválido para o campo nome (3 - 50")
+	@Size(min = 3, max = 50, message = "Tamanho inválido para o campo nome (3 - 50)")
 	@Column(name = "nome", nullable = false)
 	private String nome;
 
