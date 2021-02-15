@@ -27,7 +27,7 @@
 ```sh
 Tela de Login
 ```
-<img src="/main/webapp/resources/images/screenshot/telaDeLogin.PNG/" width="500">
+<img src="/webapp/resources/images/screenshot/telaDeLogin.PNG/" width="500">
 
 ```sh
 Tela principal
