@@ -16,7 +16,8 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @NamedQueries({
-	@NamedQuery(name = "Usuario.existeNome", query = "SELECT usuario FROM Usuario usuario WHERE usuario.login = ?") })
+	@NamedQuery(name = "Usuario.existeNome", query = "SELECT usuario FROM Usuario usuario WHERE usuario.login = ?"),
+	@NamedQuery(name = "Usuario.autenticar", query = "SELECT usuario FROM Usuario usuario WHERE usuario.login = :login AND usuario.senha = :senha") })
 public class Usuario extends AbstractEntity {
 
 	private static final long serialVersionUID = 717443138100890749L;
