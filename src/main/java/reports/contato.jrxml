@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contato" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f535d499-4f74-426f-b943-d841dc84a5db">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[bGlzdGF0ZWxlZm9uaWNhLnBlc3NvYSAsMTUsMTUsNGE4MGRlN2YtMzAyMC00OTc1LWIwZDItYjk0
+MzI1NjkwZjYwOw==]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="346"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="649"/>
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CE-Admin"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT listatelefonica.pessoa.nome AS nome,
+	listatelefonica.pessoa.data_nascimento AS dataNascimento,
+	listatelefonica.pessoa.observacao As observacao
+FROM listatelefonica.pessoa]]>
+	</queryString>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pessoa"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataNascimento" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="data_nascimento"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataNascimento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pessoa"/>
+	</field>
+	<field name="observacao" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="observacao"/>
+		<property name="com.jaspersoft.studio.field.label" value="observacao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pessoa"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<pageHeader>
+		<band height="103" splitType="Stretch">
+			<rectangle radius="0">
+				<reportElement mode="Transparent" x="0" y="2" width="553" height="65" forecolor="#9E9E9E" uuid="8827a379-4978-4840-94ab-809a3628f8e7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="260" y="4" width="284" height="16" uuid="d1a1e6e1-cae4-4c41-a482-3cad2172323f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BOA VISTA SERVIÇOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="20" width="264" height="46" uuid="5f35badd-9d69-4f73-b65c-fec6a17822e1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[CNPJ: 11725176/0001 - 27
+Av. Tamboré, 267 – 11º ao 15º andar – Torre Sul 
+Barueri - CEP: 06460-000
+Atendimento: 3003 0101]]></text>
+			</staticText>
+			<rectangle radius="0">
+				<reportElement mode="Transparent" x="0" y="74" width="553" height="21" forecolor="#9E9E9E" uuid="c0dd3914-fefa-44c3-a931-7877c6bdea94"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="1" y="76" width="552" height="16" uuid="34232a62-5abd-4dbc-af70-4c7a504bc562"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[- Relatório Contatos - ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="4" width="178" height="15" forecolor="#000000" backcolor="#000000" uuid="bae4ee11-7a3b-450a-aebe-8d4b38483312">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="af52d9d6-f1df-49c5-b9dd-e7322a7a6367"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="4" width="159" height="15" forecolor="#000000" backcolor="#FFFFFF" uuid="c137bead-50ac-48d5-b760-0e5ca0c38754">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f14eb4e8-dfe4-4368-94c7-c6d87a6cbbbc"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Observação]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="20" width="553" height="1" uuid="31e28529-3082-48a4-872d-a7f8e83b5815">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineColor="#9E9E9E"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="190" y="4" width="101" height="15" forecolor="#000000" backcolor="#FFFFFF" uuid="5774b980-5296-4f86-a30c-6e63e5705b65">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f14eb4e8-dfe4-4368-94c7-c6d87a6cbbbc"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Nascimento]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement x="2" y="0" width="178" height="15" uuid="5841bb7d-32b2-45bf-860f-b31941873347">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="780b0630-8e2f-4264-ab84-b0c35ae46e43"/>
+				</reportElement>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="253" height="15" uuid="82c533eb-bcc1-4353-961f-b6a617bc1bd0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f14eb4e8-dfe4-4368-94c7-c6d87a6cbbbc"/>
+				</reportElement>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$F{observacao}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="21" width="553" height="1" uuid="c9463df9-1f28-4fa5-9075-4f85f1c57d4b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineColor="#9E9E9E"/>
+				</graphicElement>
+			</line>
+			<textField pattern="dd/MM/YYyy">
+				<reportElement x="190" y="0" width="101" height="15" uuid="943b264a-55ba-4c0f-a2a5-4c0b11ce7669">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f14eb4e8-dfe4-4368-94c7-c6d87a6cbbbc"/>
+				</reportElement>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$F{dataNascimento}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy HH:mm a">
+				<reportElement x="66" y="3" width="84" height="13" uuid="6e1c1d44-aee2-4fbb-b9d9-65fdf0e990e8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="2" y="1" width="553" height="1" uuid="e7a58d0b-6895-4e11-a614-fffaa75865ae">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineColor="#C4C4C4"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="2" y="3" width="68" height="13" uuid="1b6fc8a9-d91d-4d38-aaf4-5e4fa5f7fe33">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Impresso em: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="480" y="4" width="40" height="13" uuid="8ac980e4-7f29-4c73-884b-1e9592b92128">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="505" y="4" width="32" height="13" uuid="5789c070-5a71-4191-b954-3b7a2b5979fb">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[" / " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
