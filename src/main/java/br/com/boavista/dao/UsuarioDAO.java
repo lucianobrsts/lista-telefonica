@@ -21,5 +21,23 @@ public class UsuarioDAO extends GenericDAO<Usuario>{
 
 		return usuarios.size() > 0;
 	}
+	
+	public Usuario autenticar(String login, String senha) {
+		Session sessao = HibernateUtil.getFabricaDeSessoes().openSession();
+		Usuario usuario = null;
+
+		try {
+			Query consulta = sessao.getNamedQuery("Usuario.autenticar");
+			consulta.setString("login", login);
+			consulta.setString("senha", senha);
+
+			usuario = (Usuario) consulta.uniqueResult();
+		} catch (RuntimeException ex) {
+			throw ex;
+		} finally {
+			sessao.close();
+		}
+		return usuario;
+	}
 
 }
