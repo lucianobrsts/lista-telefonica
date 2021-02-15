@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import br.com.boavista.dao.PessoaDAO;
 import br.com.boavista.domain.Pessoa;
@@ -13,7 +13,7 @@ import br.com.boavista.util.FacesUtil;
 import lombok.Data;
 
 @ManagedBean(name = "pessoaBean")
-@SessionScoped
+@ViewScoped
 @Data
 public class PessoaBean implements Serializable {
 
@@ -35,8 +35,8 @@ public class PessoaBean implements Serializable {
 				FacesUtil.addErrorMessage("crud.jaExistente");
 			} else {
 				pessoaDAO.salvar(pessoaCadastro);
-				pessoaCadastro = new Pessoa();
 				FacesUtil.addSuccessMessage("crud.sucesso");
+				pessoaCadastro = new Pessoa();
 			}
 		} catch (RuntimeException ex) {
 			FacesUtil.addErrorMessage("crud.erro");
