@@ -27,7 +27,7 @@ public class Usuario extends AbstractEntity {
 	private String nome;
 
 	@NotEmpty(message = "O preenchimento do campo login é obrigatório.")
-	@Size(min = 5, max = 50, message = "Tamanho inválido para o campo login (5 - 50)")
+	@Size(min = 5, max = 50, message = "Tamanho inválido para o campo login (5 - 15)")
 	@Column(name = "login", nullable = false)
 	private String login;
 
