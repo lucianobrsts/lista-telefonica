@@ -9,6 +9,7 @@ import javax.faces.bean.ViewScoped;
 
 import br.com.boavista.dao.PessoaDAO;
 import br.com.boavista.domain.Pessoa;
+import br.com.boavista.relatorio.Relatorio;
 import br.com.boavista.util.FacesUtil;
 import lombok.Data;
 
@@ -20,6 +21,8 @@ public class PessoaBean implements Serializable {
 	private static final long serialVersionUID = -1920692048518468781L;
 	private Pessoa pessoaCadastro;
 	private List<Pessoa> listaPessoas;
+	private List<Pessoa> lista;
+	private String fileName = "RelatorioContato.pdf";
 	private Long codigo;
 	
 	@PostConstruct
@@ -69,6 +72,18 @@ public class PessoaBean implements Serializable {
 			FacesUtil.addSuccessMessage("crud.sucesso");
 		} catch (RuntimeException ex) {
 			FacesUtil.addErrorMessage("crud.erro");
+		}
+	}
+	
+	public void geraRelatorioContato() {
+		Relatorio relatorio = new Relatorio();
+		PessoaDAO pessoaDAO = new PessoaDAO();
+		lista = pessoaDAO.listar();
+
+		if (!lista.isEmpty()) {
+			relatorio.getRelatorioContato(lista, fileName);
+		} else {
+			FacesUtil.addErrorMessage("pdf.semInfo");
 		}
 	}
 
