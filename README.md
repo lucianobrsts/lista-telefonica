@@ -32,34 +32,34 @@ Tela de Login
 ```sh
 Tela principal
 ```
-<img src="/main/webapp/resources/images/screenshot/telaPrincipal.PNG/" width="500">
+<img src="/src/main/webapp/resources/images/screenshots/telaPrincipal.PNG/" width="500">
 
 ```sh
 View de Contatos (dataTable preenchida)
 ```
-<img src="/main/webapp/resources/images/screenshot/contatos.PNG/" width="500">
+<img src="/src/main/webapp/resources/images/screenshots/contatos.PNG/" width="500">
 
 ```sh
 View para cadastro de novos contatos
 ```
-<img src="/main/webapp/resources/images/screenshot/cadastroNovosContatos.PNG/" width="500">
+<img src="/src/main/webapp/resources/images/screenshots/cadastroNovosContatos.PNG/" width="500">
 
 ```sh
 Modal para edição de contatos
 ```
-<img src="/main/webapp/resources/images/screenshot/modalEdicaoContatos.PNG/" width="500">
+<img src="/src/main/webapp/resources/images/screenshots/modalEdicaoContatos.PNG/" width="500">
 
 ```sh
 Modal para exclusão de contatos
 ```
-<img src="/main/webapp/resources/images/screenshot/modalExcluirContatos.PNG/" width="500">
+<img src="/src/main/webapp/resources/images/screenshots/modalExcluirContatos.PNG/" width="500">
 
 ```sh
 Modal para edição de contatos
 ```
-<img src="/main/webapp/resources/images/screenshot/modalExibirContatos.PNG/" width="500">
+<img src="/src/main/webapp/resources/images/screenshots/modalExibirContatos.PNG/" width="500">
 
 ```sh
 Modelo do Relatório gerado com informações dos contatos
 ```
-<img src="/main/webapp/resources/images/screenshot/relatorioContatos.PNG/" width="500">
+<img src="/src/main/webapp/resources/images/screenshots/relatorioContatos.PNG/" width="500">
