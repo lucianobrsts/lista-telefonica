@@ -3,3 +3,7 @@
 .ui-widget, .ui-widget .ui-widget {
 	font-size: 90%;
 }
+
+input[type=text] {
+	width: 250px;
+}
