@@ -1,128 +1,129 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <ui:define name="title">Lista Telefônica - Contato</ui:define>
 
 <ui:composition template="/template/geral.xhtml">
 
-	<ui:define name="conteudo">
-		<h:form id="formPessoaCadastrar" prependId="false">
+    <ui:define name="conteudo">
+        <h:form id="formPessoaCadastrar" prependId="false">
 
-			<p:toolbar>
-				<f:facet name="left">
-					<h:outputText value="Cadastro - Contato" />
-				</f:facet>
-			</p:toolbar>
+            <p:toolbar>
+                <f:facet name="left">
+                    <h:outputText value="Cadastro - Contato"/>
+                </f:facet>
+            </p:toolbar>
 
-			<p:separator />
+            <p:separator/>
 
-			<p:fieldset legend="Cadastro Contato" style="margin-bottom: 20px;">
-				<p:panelGrid columns="4" id="panelPessoaCadastrar"
-					styleClass="ui-panelgrid-blank"
-					style="border:0px none; background-color:transparent;">
+            <p:fieldset legend="Cadastro Contato" style="margin-bottom: 20px;">
+                <p:panelGrid columns="4" id="panelPessoaCadastrar"
+                             styleClass="ui-panelgrid-blank"
+                             style="border:0px none; background-color:transparent;">
 
-					<p:inputText type="text" id="nome" style="text-transform: uppercase;"
-						placeholder="Nome" title="Digite um nome para o Contato..."
-						value="#{pessoaBean.pessoaCadastro.nome}" />
-						
-					<p:calendar id="dataFundacao" 
-					placeholder="DATA FUNDAÇÃO"
-						title="Digite uma data para o nascimento do contato..."
-						value="#{pessoaBean.pessoaCadastro.dataNascimento}" mask="true"
-						pattern="dd/MM/yyyy" />
-				</p:panelGrid>
+                    <p:inputText type="text" id="nome" style="text-transform: uppercase;"
+                                 placeholder="Nome" title="Digite um nome para o Contato..."
+                                 value="#{pessoaBean.pessoaCadastro.nome}"/>
 
-				<p:panelGrid columns="2" id="panelFornecedorCadastrarObs"
-					columnClasses="ui-grid-col-2" styleClass="ui-panelgrid-blank"
-					style="border:0px none; background-color:transparent;">
+                    <p:calendar id="dataFundacao"
+                                placeholder="DATA FUNDAÇÃO"
+                                title="Digite uma data para o nascimento do contato..."
+                                value="#{pessoaBean.pessoaCadastro.dataNascimento}" mask="true"
+                                pattern="dd/MM/yyyy"/>
+                </p:panelGrid>
 
-					<p:inputTextarea id="observacao" rows="2" placeholder="Observação"
-						style="text-transform: uppercase; width: 530px;"
-						title="Digite uma observação sobre o contato..."
-						value="#{pessoaBean.pessoaCadastro.observacao}" />
-				</p:panelGrid>
-			</p:fieldset>
+                <p:panelGrid columns="2" id="panelFornecedorCadastrarObs"
+                             columnClasses="ui-grid-col-2" styleClass="ui-panelgrid-blank"
+                             style="border:0px none; background-color:transparent;">
 
-			<p:fieldset legend="Cadastro Endereço/Contato" toggleable="true"
-				toggleSpeed="500" collapsed="true">
-				<p:panelGrid columns="2" id="panelEnderecoCadastrar"
-					styleClass="ui-panelgrid-blank form-group form-elements"
-					style="border:0px none; background-color:transparent;">
+                    <p:inputTextarea id="observacao" rows="2" placeholder="Observação"
+                                     style="text-transform: uppercase; width: 530px;"
+                                     title="Digite uma observação sobre o contato..."
+                                     value="#{pessoaBean.pessoaCadastro.observacao}"/>
+                </p:panelGrid>
+            </p:fieldset>
 
-					<p:inputText type="text" id="logradouro" placeholder="Logradouro"
-						style="text-transform: uppercase;"
-						title="Digite um nome para o logradouro do contato..."
-						value="#{pessoaBean.pessoaCadastro.endereco.logradouro}" />
+            <p:fieldset legend="Cadastro Endereço/Contato" toggleable="true"
+                        toggleSpeed="500" collapsed="true">
+                <p:panelGrid columns="2" id="panelEnderecoCadastrar"
+                             styleClass="ui-panelgrid-blank form-group form-elements"
+                             style="border:0px none; background-color:transparent;">
 
-					<p:inputText type="text" id="numero" placeholder="Número"
-						title="Digite um número para o endereço do contato..."
-						value="#{pessoaBean.pessoaCadastro.endereco.numero}"
-						converterMessage="Digite um valor somente numérico para o campo número.">
-						<f:convertNumber />
-					</p:inputText>
+                    <p:inputText type="text" id="logradouro" placeholder="Logradouro"
+                                 style="text-transform: uppercase;"
+                                 title="Digite um nome para o logradouro do contato..."
+                                 value="#{pessoaBean.pessoaCadastro.endereco.logradouro}"/>
 
-					<p:inputText type="text" id="complemento" placeholder="Complemento"
-						style="text-transform: uppercase;"
-						title="Digite um complemento para o endereço do contato..."
-						value="#{pessoaBean.pessoaCadastro.endereco.complemento}" />
+                    <p:inputText type="text" id="numero" placeholder="Número"
+                                 title="Digite um número para o endereço do contato..."
+                                 value="#{pessoaBean.pessoaCadastro.endereco.numero}"
+                                 converterMessage="Digite um valor somente numérico para o campo número.">
+                        <f:convertNumber/>
+                    </p:inputText>
 
-					<p:inputText type="text" id="bairro" placeholder="Bairro"
-						style="text-transform: uppercase;"
-						title="Digite um nome para o bairro do contato..."
-						value="#{pessoaBean.pessoaCadastro.endereco.bairro}" />
+                    <p:inputText type="text" id="complemento" placeholder="Complemento"
+                                 style="text-transform: uppercase;"
+                                 title="Digite um complemento para o endereço do contato..."
+                                 value="#{pessoaBean.pessoaCadastro.endereco.complemento}"/>
 
-					<p:inputMask id="cep" placeholder="CEP" style="width: 250px;"
-						title="Digite um número para o CEP do contato..."
-						value="#{pessoaBean.pessoaCadastro.endereco.cep}"
-						mask="99.999-999" />
+                    <p:inputText type="text" id="bairro" placeholder="Bairro"
+                                 style="text-transform: uppercase;"
+                                 title="Digite um nome para o bairro do contato..."
+                                 value="#{pessoaBean.pessoaCadastro.endereco.bairro}"/>
 
-					<p:inputMask id="fone" placeholder="Telefone"
-						style="width: 250px;"
-						title="Digite um número para o telefone fixo do contato..."
-						value="#{pessoaBean.pessoaCadastro.contato.telefone}"
-						mask="(85) 9999-9999" />
+                    <p:inputMask id="cep" placeholder="CEP" style="width: 250px;"
+                                 title="Digite um número para o CEP do contato..."
+                                 value="#{pessoaBean.pessoaCadastro.endereco.cep}"
+                                 mask="99.999-999"/>
 
-					<p:inputMask id="celular" placeholder="Celular"
-						style="text-transform: uppercase; width: 250px;"
-						title="Digite um número para o celular do contato..."
-						value="#{pessoaBean.pessoaCadastro.contato.celular}"
-						mask="(85) 99999-9999" />
+                    <p:inputMask id="fone" placeholder="Telefone"
+                                 style="width: 250px;"
+                                 title="Digite um número para o telefone fixo do contato..."
+                                 value="#{pessoaBean.pessoaCadastro.contato.telefone}"
+                                 mask="(85) 9999-9999"/>
 
-					<p:inputMask id="whatsapp" placeholder="Whatsapp"
-						style="text-transform: uppercase; width: 250px;"
-						title="Digite um número para o whatsapp do contato..."
-						value="#{pessoaBean.pessoaCadastro.contato.whatsapp}"
-						mask="(85) 99999-9999" />
+                    <p:inputMask id="celular" placeholder="Celular"
+                                 style="text-transform: uppercase; width: 250px;"
+                                 title="Digite um número para o celular do contato..."
+                                 value="#{pessoaBean.pessoaCadastro.contato.celular}"
+                                 mask="(85) 99999-9999"/>
 
-					<p:inputText type="text" id="email" placeholder="Email"
-						style="text-transform: uppercase;"
-						title="Digite um email para o contato..."
-						value="#{pessoaBean.pessoaCadastro.contato.email}" />
+                    <p:inputMask id="whatsapp" placeholder="Whatsapp"
+                                 style="text-transform: uppercase; width: 250px;"
+                                 title="Digite um número para o whatsapp do contato..."
+                                 value="#{pessoaBean.pessoaCadastro.contato.whatsapp}"
+                                 mask="(85) 99999-9999"/>
 
-				</p:panelGrid>
-			</p:fieldset>
+                    <p:inputText type="text" id="email" placeholder="Email"
+                                 style="text-transform: uppercase;"
+                                 title="Digite um email para o contato..."
+                                 value="#{pessoaBean.pessoaCadastro.contato.email}"/>
 
-			<p:panelGrid columns="2" layout="grid"
-				styleClass="ui-panelgrid-blank"
-				style="border:0px none; background-color:transparent; margin-top: 20px; width: 20%;">
+                </p:panelGrid>
+            </p:fieldset>
 
-				<p:commandButton value="#{msg.salvar}" icon="fa fa-floppy-o"
-					style="width: 120px;" title="#{msg.salvar}"
-					actionListener="#{pessoaBean.salvar}"
-					update=":mensagemGlobal :formPessoaCadastrar" />
+            <p:panelGrid columns="2" layout="grid"
+                         styleClass="ui-panelgrid-blank"
+                         style="border:0px none; background-color:transparent; margin-top: 20px; width: 20%;">
 
-				<p:button value="#{msg.cancelar}" icon="fa fa-fw fa-times"
-					title="#{msg.cancelar}"
-					style="width: 120px;"
-					outcome="/pages/cadastro/pessoa/pessoaPesquisar.xhtml?faces-redirect=true" />
-			</p:panelGrid>
-		</h:form>
-	</ui:define>
+                <p:commandButton value="#{msg.salvar}" icon="fa fa-floppy-o"
+                                 style="width: 120px;" title="#{msg.salvar}"
+                                 actionListener="#{pessoaBean.salvar}"
+                                 update=":mensagemGlobal :formPessoaCadastrar"/>
+
+                <p:button value="#{msg.cancelar}" icon="fa fa-fw fa-times"
+                          title="#{msg.cancelar}"
+                          style="width: 120px;"
+                          outcome="/pages/cadastro/pessoa/pessoaPesquisar.xhtml?faces-redirect=true"/>
+            </p:panelGrid>
+        </h:form>
+    </ui:define>
 
 </ui:composition>
 </html>

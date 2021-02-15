@@ -1,54 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <ui:define name="title">Lista Telefônica - Tipo Usuário</ui:define>
 
 <ui:composition template="/template/geral.xhtml">
 
-	<ui:define name="conteudo">
-		<h:form id="formTipoUsuarioCadastrar">
+    <ui:define name="conteudo">
+        <h:form id="formTipoUsuarioCadastrar">
 
-			<p:toolbar>
-				<f:facet name="left">
-					<h:outputText value="Cadastro - Tipo Usuário" />
-				</f:facet>
-			</p:toolbar>
+            <p:toolbar>
+                <f:facet name="left">
+                    <h:outputText value="Cadastro - Tipo Usuário"/>
+                </f:facet>
+            </p:toolbar>
 
-			<p:separator />
+            <p:separator/>
 
-			<p:fieldset legend="Cadastro Tipo Usuário" style="margin-bottom: 20px;">
-				<p:panelGrid columns="1" id="panelTipoUsuarioCadastrar"
-					styleClass="ui-panelgrid-blank"
-					style="border:0px none; background-color:transparent;">
+            <p:fieldset legend="Cadastro Tipo Usuário" style="margin-bottom: 20px;">
+                <p:panelGrid columns="1" id="panelTipoUsuarioCadastrar"
+                             styleClass="ui-panelgrid-blank"
+                             style="border:0px none; background-color:transparent;">
 
-					<p:inputText type="text" id="nome" style="text-transform: uppercase;"
-						placeholder="Nome" title="Digite um nome para o tipo usuário..."
-						value="#{tipoUsuarioBean.tipoUsuarioCadastro.nome}" />
-						
-				</p:panelGrid>
-			</p:fieldset>
+                    <p:inputText type="text" id="nome" style="text-transform: uppercase;"
+                                 placeholder="Nome" title="Digite um nome para o tipo usuário..."
+                                 value="#{tipoUsuarioBean.tipoUsuarioCadastro.nome}"/>
 
-			<p:panelGrid columns="2" layout="grid"
-				styleClass="ui-panelgrid-blank"
-				style="border:0px none; background-color:transparent; margin-top: 20px; width: 20%;">
+                </p:panelGrid>
+            </p:fieldset>
 
-				<p:commandButton value="#{msg.salvar}" icon="fa fa-floppy-o"
-					style="width: 120px;" title="#{msg.salvar}"
-					actionListener="#{tipoUsuarioBean.salvar}"
-					update=":mensagemGlobal :formTipoUsuarioCadastrar" />
+            <p:panelGrid columns="2" layout="grid"
+                         styleClass="ui-panelgrid-blank"
+                         style="border:0px none; background-color:transparent; margin-top: 20px; width: 20%;">
 
-				<p:button value="#{msg.cancelar}" icon="fa fa-fw fa-times"
-					title="#{msg.cancelar}"
-					style="width: 120px;"
-					outcome="/pages/cadastro/tipoUsuario/tipoUsuarioPesquisar.xhtml?faces-redirect=true" />
-			</p:panelGrid>
-		</h:form>
-	</ui:define>
+                <p:commandButton value="#{msg.salvar}" icon="fa fa-floppy-o"
+                                 style="width: 120px;" title="#{msg.salvar}"
+                                 actionListener="#{tipoUsuarioBean.salvar}"
+                                 update=":mensagemGlobal :formTipoUsuarioCadastrar"/>
+
+                <p:button value="#{msg.cancelar}" icon="fa fa-fw fa-times"
+                          title="#{msg.cancelar}"
+                          style="width: 120px;"
+                          outcome="/pages/cadastro/tipoUsuario/tipoUsuarioPesquisar.xhtml?faces-redirect=true"/>
+            </p:panelGrid>
+        </h:form>
+    </ui:define>
 
 </ui:composition>
 </html>

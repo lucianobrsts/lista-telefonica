@@ -96,7 +96,7 @@
                             style="margin: 0px 20px 20px 20px;">
                     <h:panelGrid columns="4" id="panelEditarPessoa"
                                  style="margin: 20px 10px 0px 10px;">
-                       
+
                         <h:outputText value="Nome:"/>
                         <p:inputText id="nome" size="50"
                                      style="text-transform: uppercase;"
@@ -114,7 +114,7 @@
 
                         <h:outputText value="Observação:"/>
                         <h:inputTextarea id="observacao" rows="2" cols="73"
-                                     style="text-transform: uppercase;"
+                                         style="text-transform: uppercase;"
                                          title="Observações do contato..."
                                          value="#{pessoaBean.pessoaCadastro.observacao}"/>
                     </h:panelGrid>
@@ -194,7 +194,7 @@
                                      update=":mensagemGlobal :formPessoaListar:tabelaPessoaListar"/>
 
                     <p:commandButton value="#{msg.cancelar}" style="width: 120px;"
-                                     icon="fa fa-fw fa-times" 
+                                     icon="fa fa-fw fa-times"
                                      title="#{msg.cancelar}"
                                      oncomplete="PF('dialogPessoaEditar').hide();"/>
                 </p:outputPanel>
@@ -222,7 +222,7 @@
                                style="text-align: center; margin: 30px 10px 30px 10px;">
                     <p:commandButton value="#{msg.sim}"
                                      style="margin-right: 20px; width: 120px;" icon="ui-icon-trash"
-                                     title="#{msg.excluir}" 
+                                     title="#{msg.excluir}"
                                      oncomplete="PF('dialogPessoaExcluir').hide()"
                                      actionListener="#{pessoaBean.excluir}"
                                      update=":mensagemGlobal :formPessoaListar:tabelaPessoaListar"/>
@@ -259,7 +259,7 @@
                                                timeZone="America/Sao_Paulo"/>
                         </h:inputText>
                     </h:panelGrid>
-                    
+
                     <h:panelGrid columns="4" id="panelInfoPessoaObs"
                                  style="margin: 20px 10px 0px 10px;">
 
@@ -336,7 +336,7 @@
                 <p:outputPanel columns="1"
                                style="text-align: center; margin: 30px 0px 30px 0px;">
                     <p:commandButton value="#{msg.fechar}" style="width: 120px;"
-                                     icon="fa fa-fw fa-times" 
+                                     icon="fa fa-fw fa-times"
                                      title="#{msg.fechar}"
                                      oncomplete="PF('dialogPessoaListar').hide();"/>
                 </p:outputPanel>

@@ -80,7 +80,7 @@
                             style="margin: 0px 20px 20px 20px;">
                     <h:panelGrid columns="2" id="panelEditarTipoUsuario"
                                  style="margin: 20px 10px 0px 10px;">
-                       
+
                         <h:outputText value="Nome:"/>
                         <p:inputText id="nome" size="50"
                                      style="text-transform: uppercase;"
@@ -100,7 +100,7 @@
                                      update=":mensagemGlobal :formTipoUsuarioListar:tabelaTipoUsuarioListar"/>
 
                     <p:commandButton value="#{msg.cancelar}" style="width: 120px;"
-                                     icon="fa fa-fw fa-times" 
+                                     icon="fa fa-fw fa-times"
                                      title="#{msg.cancelar}"
                                      oncomplete="PF('dialogTipoUsuarioEditar').hide();"/>
                 </p:outputPanel>
@@ -128,7 +128,7 @@
                                style="text-align: center; margin: 30px 10px 30px 10px;">
                     <p:commandButton value="#{msg.sim}"
                                      style="margin-right: 20px; width: 120px;" icon="ui-icon-trash"
-                                     title="#{msg.excluir}" 
+                                     title="#{msg.excluir}"
                                      oncomplete="PF('dialogTipoUsuarioExcluir').hide()"
                                      actionListener="#{tipoUsuarioBean.excluir}"
                                      update=":mensagemGlobal :formTipoUsuarioListar:tabelaTipoUsuarioListar"/>
@@ -163,7 +163,7 @@
                 <p:outputPanel columns="1"
                                style="text-align: center; margin: 30px 0px 30px 0px;">
                     <p:commandButton value="#{msg.fechar}" style="width: 120px;"
-                                     icon="fa fa-fw fa-times" 
+                                     icon="fa fa-fw fa-times"
                                      title="#{msg.fechar}"
                                      oncomplete="PF('dialogTipoUsuarioListar').hide();"/>
                 </p:outputPanel>

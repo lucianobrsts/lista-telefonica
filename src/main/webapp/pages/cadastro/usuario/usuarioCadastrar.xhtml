@@ -1,64 +1,65 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <ui:define name="title">Lista Telefônica - Usuário</ui:define>
 
 <ui:composition template="/template/geral.xhtml">
 
-	<ui:define name="conteudo">
-		<h:form id="formUsuarioCadastrar" prependId="false">
+    <ui:define name="conteudo">
+        <h:form id="formUsuarioCadastrar" prependId="false">
 
-			<p:toolbar>
-				<f:facet name="left">
-					<h:outputText value="Cadastro - Usuário" />
-				</f:facet>
-			</p:toolbar>
+            <p:toolbar>
+                <f:facet name="left">
+                    <h:outputText value="Cadastro - Usuário"/>
+                </f:facet>
+            </p:toolbar>
 
-			<p:separator />
+            <p:separator/>
 
-			<p:fieldset legend="Cadastro Usuário" style="margin-bottom: 20px;">
-				<p:panelGrid columns="1" id="panelUsuarioCadastrar"
-					styleClass="ui-panelgrid-blank"
-					style="border:0px none; background-color:transparent;">
+            <p:fieldset legend="Cadastro Usuário" style="margin-bottom: 20px;">
+                <p:panelGrid columns="1" id="panelUsuarioCadastrar"
+                             styleClass="ui-panelgrid-blank"
+                             style="border:0px none; background-color:transparent;">
 
-					<p:inputText type="text" id="nome" maxlength="50"
-						style="text-transform: uppercase;" placeholder="Nome"
-						title="Digite um nome para o usuário..."
-						value="#{usuarioBean.usuarioCadastro.nome}" />
+                    <p:inputText type="text" id="nome" maxlength="50"
+                                 style="text-transform: uppercase;" placeholder="Nome"
+                                 title="Digite um nome para o usuário..."
+                                 value="#{usuarioBean.usuarioCadastro.nome}"/>
 
-					<p:inputText type="text" id="login" maxlength="15"
-						style="text-transform: uppercase;" placeholder="Login"
-						title="Digite um nome para o login do usuário..."
-						value="#{usuarioBean.usuarioCadastro.login}" />
+                    <p:inputText type="text" id="login" maxlength="15"
+                                 style="text-transform: uppercase;" placeholder="Login"
+                                 title="Digite um nome para o login do usuário..."
+                                 value="#{usuarioBean.usuarioCadastro.login}"/>
 
-					<p:password type="text" id="password" maxlength="10"
-						style="text-transform: uppercase;" placeholder="password"
-						title="Digite um nome para a senha do usuário..."
-						value="#{usuarioBean.usuarioCadastro.senha}" />
+                    <p:password type="text" id="password" maxlength="10"
+                                style="text-transform: uppercase;" placeholder="password"
+                                title="Digite um nome para a senha do usuário..."
+                                value="#{usuarioBean.usuarioCadastro.senha}"/>
 
-				</p:panelGrid>
-			</p:fieldset>
+                </p:panelGrid>
+            </p:fieldset>
 
-			<p:panelGrid columns="2" layout="grid"
-				styleClass="ui-panelgrid-blank"
-				style="border:0px none; background-color:transparent; margin-top: 20px; width: 20%;">
+            <p:panelGrid columns="2" layout="grid"
+                         styleClass="ui-panelgrid-blank"
+                         style="border:0px none; background-color:transparent; margin-top: 20px; width: 20%;">
 
-				<p:commandButton value="#{msg.salvar}" icon="fa fa-floppy-o"
-					style="width: 120px;" title="#{msg.salvar}"
-					actionListener="#{usuarioBean.salvar}"
-					update=":mensagemGlobal :formUsuarioCadastrar" />
+                <p:commandButton value="#{msg.salvar}" icon="fa fa-floppy-o"
+                                 style="width: 120px;" title="#{msg.salvar}"
+                                 actionListener="#{usuarioBean.salvar}"
+                                 update=":mensagemGlobal :formUsuarioCadastrar"/>
 
-				<p:button value="#{msg.cancelar}" icon="fa fa-fw fa-times"
-					title="#{msg.cancelar}" style="width: 120px;"
-					outcome="/pages/cadastro/usuario/usuarioPesquisar.xhtml?faces-redirect=true" />
-			</p:panelGrid>
-		</h:form>
-	</ui:define>
+                <p:button value="#{msg.cancelar}" icon="fa fa-fw fa-times"
+                          title="#{msg.cancelar}" style="width: 120px;"
+                          outcome="/pages/cadastro/usuario/usuarioPesquisar.xhtml?faces-redirect=true"/>
+            </p:panelGrid>
+        </h:form>
+    </ui:define>
 
 </ui:composition>
 </html>
