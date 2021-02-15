@@ -24,15 +24,13 @@
 
 				<h:panelGrid columns="2">
 					<p:outputLabel value="Login:" />
-					<p:inputText size="20"
+					<p:inputText maxlength="15" style="width: 200px;"
 						value="#{autenticacaoBean.usuarioLogado.login}">
-						<f:validateBean />
 					</p:inputText>
-
+					
 					<p:outputLabel value="Senha:" />
-					<p:password maxlength="10" size="20"
+					<p:password maxlength="10" style="width: 200px;"
 						value="#{autenticacaoBean.usuarioLogado.senha}">
-						<f:validateBean />
 					</p:password>
 				</h:panelGrid>
 
