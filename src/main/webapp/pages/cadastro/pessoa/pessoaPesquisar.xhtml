@@ -223,7 +223,7 @@
                     <p:commandButton value="#{msg.sim}"
                                      style="margin-right: 20px; width: 120px;" icon="ui-icon-trash"
                                      title="#{msg.excluir}" 
-                                     oncomplete="PF('dialogPessoaExcluir').hide(); PF('tabelaPessoaListar').clearFilters()"
+                                     oncomplete="PF('dialogPessoaExcluir').hide()"
                                      actionListener="#{pessoaBean.excluir}"
                                      update=":mensagemGlobal :formPessoaListar:tabelaPessoaListar"/>
 

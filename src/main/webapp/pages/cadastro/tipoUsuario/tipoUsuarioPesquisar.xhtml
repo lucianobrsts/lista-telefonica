@@ -129,7 +129,7 @@
                     <p:commandButton value="#{msg.sim}"
                                      style="margin-right: 20px; width: 120px;" icon="ui-icon-trash"
                                      title="#{msg.excluir}" 
-                                     oncomplete="PF('dialogTipoUsuarioExcluir').hide(); PF('tabelaTipoUsuarioListar').clearFilters()"
+                                     oncomplete="PF('dialogTipoUsuarioExcluir').hide()"
                                      actionListener="#{tipoUsuarioBean.excluir}"
                                      update=":mensagemGlobal :formTipoUsuarioListar:tabelaTipoUsuarioListar"/>
 
