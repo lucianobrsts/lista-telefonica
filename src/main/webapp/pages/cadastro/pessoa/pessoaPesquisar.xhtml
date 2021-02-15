@@ -39,13 +39,13 @@
                          paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 
                 <p:column headerText="Nome" style="text-align: center;"
-                          filterBy="#{pessoa.nome}">
+                          filterBy="#{pessoa.nome}" sortBy="#{pessoa.nome}">
                     <h:outputText value="#{pessoa.nome}"
                                   style="text-transform: uppercase;"/>
                 </p:column>
 
-                <p:column headerText="Data Nascimento" style="text-align: center; width: 15%;">
-                    <h:outputText value="#{pessoa.dataNascimento}"/>
+                <p:column headerText="Email" style="text-align: center;">
+                    <h:outputText value="#{pessoa.contato.email}"/>
                 </p:column>
 
                 <p:column headerText="Telefone" style="text-align: center; width: 15%;">
@@ -99,12 +99,12 @@
                        
                         <h:outputText value="Nome:"/>
                         <p:inputText id="nome" size="50"
-                                     style="text-transform: uppercase; height: 23px;"
+                                     style="text-transform: uppercase;"
                                      title="Digite um nome para o contato..."
                                      value="#{pessoaBean.pessoaCadastro.nome}"/>
 
                         <h:outputText value="Data Nascimento:"/>
-                        <p:calendar id="dataNascimento" size="50" style="height: 1050px;"
+                        <p:calendar id="dataNascimento" size="50"
                                     title="Digite uma data para o nascimento do contato..."
                                     value="#{pessoaBean.pessoaCadastro.dataNascimento}" mask="true"
                                     pattern="dd/MM/yyyy"/>
@@ -113,7 +113,8 @@
                                  style="margin: 20px 10px 0px 10px;">
 
                         <h:outputText value="Observação:"/>
-                        <h:inputTextarea id="observacao" rows="2" cols="105"
+                        <h:inputTextarea id="observacao" rows="2" cols="73"
+                                     style="text-transform: uppercase;"
                                          title="Observações do contato..."
                                          value="#{pessoaBean.pessoaCadastro.observacao}"/>
                     </h:panelGrid>
@@ -187,13 +188,13 @@
                                style="text-align: center; margin: 30px 0px 30px 0px;">
                     <p:commandButton value="#{msg.salvar}"
                                      style="margin-right: 20px; width: 120px;" icon="fa fa-floppy-o"
-                                     styleClass="green-button raised-btn" title="#{msg.salvar}"
+                                     title="#{msg.salvar}"
                                      oncomplete="PF('dialogPessoaEditar').hide();"
                                      actionListener="#{pessoaBean.editar}"
                                      update=":mensagemGlobal :formPessoaListar:tabelaPessoaListar"/>
 
                     <p:commandButton value="#{msg.cancelar}" style="width: 120px;"
-                                     icon="fa fa-fw fa-times" styleClass="red-button raised-btn"
+                                     icon="fa fa-fw fa-times" 
                                      title="#{msg.cancelar}"
                                      oncomplete="PF('dialogPessoaEditar').hide();"/>
                 </p:outputPanel>
@@ -221,13 +222,13 @@
                                style="text-align: center; margin: 30px 10px 30px 10px;">
                     <p:commandButton value="#{msg.sim}"
                                      style="margin-right: 20px; width: 120px;" icon="ui-icon-trash"
-                                     title="#{msg.excluir}" styleClass="green-button raised-btn"
+                                     title="#{msg.excluir}" 
                                      oncomplete="PF('dialogPessoaExcluir').hide(); PF('tabelaPessoaListar').clearFilters()"
                                      actionListener="#{pessoaBean.excluir}"
                                      update=":mensagemGlobal :formPessoaListar:tabelaPessoaListar"/>
 
                     <p:commandButton value="#{msg.nao}" style="width: 120px;"
-                                     icon="fa fa-fw fa-times" styleClass="red-button raised-btn"
+                                     icon="fa fa-fw fa-times"
                                      title="#{msg.cancelar}"
                                      oncomplete="PF('dialogPessoaExcluir').hide();"/>
                 </p:outputPanel>
@@ -263,7 +264,7 @@
                                  style="margin: 20px 10px 0px 10px;">
 
                         <h:outputText value="Observação:"/>
-                        <h:inputTextarea id="observacao" rows="2" cols="115"
+                        <h:inputTextarea id="observacao" rows="2" cols="73"
                                          disabled="true" title="Observações do contato..."
                                          value="#{pessoaBean.pessoaCadastro.observacao}"/>
 
@@ -335,7 +336,7 @@
                 <p:outputPanel columns="1"
                                style="text-align: center; margin: 30px 0px 30px 0px;">
                     <p:commandButton value="#{msg.fechar}" style="width: 120px;"
-                                     icon="fa fa-fw fa-times" styleClass="red-button raised-btn"
+                                     icon="fa fa-fw fa-times" 
                                      title="#{msg.fechar}"
                                      oncomplete="PF('dialogPessoaListar').hide();"/>
                 </p:outputPanel>
