@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:define name="title">Lista Telefônica - Tipo Usuário</ui:define>
+
+<ui:define name="metadata">
+    <f:metadata>
+        <f:event listener="#{tipoUsuarioBean.carregarPesquisa}"
+                 type="preRenderView"/>
+    </f:metadata>
+</ui:define>
+
+<ui:composition template="/template/geral.xhtml">
+
+    <ui:define name="conteudo">
+        <h:form id="formTipoUsuarioListar">
+            <p:toolbar>
+                <f:facet name="left">
+                    <h:outputText value="Tipo Usuário"/>
+                </f:facet>
+            </p:toolbar>
+
+            <p:separator/>
+            <p:button value="#{msg.novo}" icon="ui-icon-circle-plus"
+                      style="width: 120px;" title="#{msg.novo}"
+                      outcome="/pages/cadastro/tipoUsuario/tipoUsuarioCadastrar.xhtml?faces-redirect=true"/>
+            <p:separator/>
+
+            <p:dataTable emptyMessage="Nenhum registro encontrado..."
+                         id="tabelaTipoUsuarioListar" value="#{tipoUsuarioBean.listaTipoUsuarios}"
+                         filteredValue="" var="tipoUsuario" paginator="true" rows="10"
+                         rowsPerPageTemplate="5, 10, 15, 20"
+                         paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+                <p:column headerText="Nome" style="text-align: center;"
+                          filterBy="#{tipoUsuario.nome}" sortBy="#{tipoUsuario.nome}">
+                    <h:outputText value="#{tipoUsuario.nome}"
+                                  style="text-transform: uppercase;"/>
+                </p:column>
+
+                <p:column headerText="Opção" style="text-align: center; width: 14%;">
+                    <p:commandButton icon="ui-icon-pencil" title="#{msg.editar}"
+                                     style="width: 50px" oncomplete="PF('dialogTipoUsuarioEditar').show();"
+                                     update=":formTipoUsuarioEditar">
+                        <f:setPropertyActionListener value="#{tipoUsuario}"
+                                                     target="#{tipoUsuarioBean.tipoUsuarioCadastro}"/>
+                    </p:commandButton>
+
+                    <p:commandButton icon="ui-icon-trash" title="#{msg.excluir}"
+                                     style="width: 50px" oncomplete="PF('dialogTipoUsuarioExcluir').show();"
+                                     update=":formTipoUsuarioExcluir:panelTipoUsuarioExcluir">
+                        <f:setPropertyActionListener value="#{tipoUsuario}"
+                                                     target="#{tipoUsuarioBean.tipoUsuarioCadastro}"/>
+                    </p:commandButton>
+
+                    <p:commandButton update=":formTipoUsuarioInfo"
+                                     oncomplete="PF('dialogTipoUsuarioListar').show();"
+                                     icon="ui-icon-search" title="#{msg.exibir}" style="width: 50px">
+                        <f:setPropertyActionListener value="#{tipoUsuario}"
+                                                     target="#{tipoUsuarioBean.tipoUsuarioCadastro}"/>
+                    </p:commandButton>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+
+
+        <!-- Dialogo Editar -->
+        <p:dialog header="Editar" widgetVar="dialogTipoUsuarioEditar" modal="true"
+                  showEffect="fade" resizable="false" visible="false"
+                  appendTo="@(body)" draggable="false">
+
+            <h:form id="formTipoUsuarioEditar">
+                <p:fieldset legend="Dados Tipo Usuário"
+                            style="margin: 0px 20px 20px 20px;">
+                    <h:panelGrid columns="2" id="panelEditarTipoUsuario"
+                                 style="margin: 20px 10px 0px 10px;">
+                       
+                        <h:outputText value="Nome:"/>
+                        <p:inputText id="nome" size="50"
+                                     style="text-transform: uppercase;"
+                                     title="Digite um nome para o tipo do usuário..."
+                                     value="#{tipoUsuarioBean.tipoUsuarioCadastro.nome}"/>
+
+                    </h:panelGrid>
+                </p:fieldset>
+
+                <p:outputPanel columns="1"
+                               style="text-align: center; margin: 30px 0px 30px 0px;">
+                    <p:commandButton value="#{msg.salvar}"
+                                     style="margin-right: 20px; width: 120px;" icon="fa fa-floppy-o"
+                                     title="#{msg.salvar}"
+                                     oncomplete="PF('dialogTipoUsuarioEditar').hide();"
+                                     actionListener="#{tipoUsuarioBean.editar}"
+                                     update=":mensagemGlobal :formTipoUsuarioListar:tabelaTipoUsuarioListar"/>
+
+                    <p:commandButton value="#{msg.cancelar}" style="width: 120px;"
+                                     icon="fa fa-fw fa-times" 
+                                     title="#{msg.cancelar}"
+                                     oncomplete="PF('dialogTipoUsuarioEditar').hide();"/>
+                </p:outputPanel>
+            </h:form>
+        </p:dialog>
+
+        <!-- Dialogo Excluir -->
+        <p:dialog header="#{msg.excluir}" widgetVar="dialogTipoUsuarioExcluir"
+                  modal="true" showEffect="fade" resizable="false" visible="false"
+                  appendTo="@(body)" draggable="false">
+
+            <h:form id="formTipoUsuarioExcluir">
+                <p:fieldset legend="TipoUsuario" style="margin: 0px 20px 20px 20px;">
+                    <h:panelGrid columns="3" id="panelTipoUsuarioExcluir"
+                                 style="margin: 20px 10px 20px 10px;">
+
+                        <h:outputText value="Tem certeza que deseja excluir o tipo usuário "/>
+                        <h:outputText style="font-weight: bold;"
+                                      value="#{tipoUsuarioBean.tipoUsuarioCadastro.nome}"/>
+                        <h:outputText value=" do sistema?"/>
+                    </h:panelGrid>
+                </p:fieldset>
+
+                <p:outputPanel columns="2"
+                               style="text-align: center; margin: 30px 10px 30px 10px;">
+                    <p:commandButton value="#{msg.sim}"
+                                     style="margin-right: 20px; width: 120px;" icon="ui-icon-trash"
+                                     title="#{msg.excluir}" 
+                                     oncomplete="PF('dialogTipoUsuarioExcluir').hide(); PF('tabelaTipoUsuarioListar').clearFilters()"
+                                     actionListener="#{tipoUsuarioBean.excluir}"
+                                     update=":mensagemGlobal :formTipoUsuarioListar:tabelaTipoUsuarioListar"/>
+
+                    <p:commandButton value="#{msg.nao}" style="width: 120px;"
+                                     icon="fa fa-fw fa-times"
+                                     title="#{msg.cancelar}"
+                                     oncomplete="PF('dialogTipoUsuarioExcluir').hide();"/>
+                </p:outputPanel>
+            </h:form>
+        </p:dialog>
+
+        <!-- Dialogo Info -->
+        <p:dialog header="#{msg.info}" widgetVar="dialogTipoUsuarioListar"
+                  modal="true" showEffect="fade" resizable="false" visible="false"
+                  appendTo="@(body)" draggable="false">
+
+            <h:form id="formTipoUsuarioInfo">
+                <p:fieldset legend="Dados Tipo Usuário"
+                            style="margin: 0px 20px 20px 20px;">
+                    <h:panelGrid columns="4" id="panelInfoTipoUsuario"
+                                 style="margin: 20px 10px 0px 10px;">
+
+                        <h:outputText value="Nome:"/>
+                        <h:inputText size="50" disabled="true" style="height: 23px;"
+                                     title="Nome do tipo usuário..."
+                                     value="#{tipoUsuarioBean.tipoUsuarioCadastro.nome}"/>
+
+                    </h:panelGrid>
+                </p:fieldset>
+
+                <p:outputPanel columns="1"
+                               style="text-align: center; margin: 30px 0px 30px 0px;">
+                    <p:commandButton value="#{msg.fechar}" style="width: 120px;"
+                                     icon="fa fa-fw fa-times" 
+                                     title="#{msg.fechar}"
+                                     oncomplete="PF('dialogTipoUsuarioListar').hide();"/>
+                </p:outputPanel>
+            </h:form>
+        </p:dialog>
+    </ui:define>
+</ui:composition>
+</html>
