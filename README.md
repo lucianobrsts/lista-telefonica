@@ -1,5 +1,5 @@
 ## Lista Telefônica
-> O projeto Lista Telefônica foi solicitado para servir de parâmentro de avaliação para os conhecimentos de preenchimento de uma vaga de desenvolvedor java na empresa Boa Vista Serviços. Seu proposito é cadastrar, listar, remover e atualizar contatos e usuários, gerar relatórios em pdf e xls e gerenciar o login de usuários dependencdo de sua permissão. 
+> O projeto Lista Telefônica foi solicitado para servir de parâmentro de avaliação para os conhecimentos de preenchimento de uma vaga de desenvolvedor java na empresa Boavista Tecnologia. Seu proposito é cadastrar, listar, remover e atualizar contatos e usuários, gerar relatórios em pdf e xls e gerenciar o login de usuários dependencdo de sua permissão. 
 
 #### Tecnologias utilizadas:
 
